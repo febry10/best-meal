@@ -1,13 +1,11 @@
-import { mkdirSync, writeFileSync, chmodSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const entry = "The rendang my grandmother simmered since dawn in Padang — coconut milk, torch ginger, smoke in the walls — fell apart under my spoon and tasted like the last rainy afternoon before I left home.";
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR || "/output";
 mkdirSync(outDir, { recursive: true });
-chmodSync(outDir, 0o755);
 const outPath = join(outDir, "entry.txt");
 writeFileSync(outPath, entry, "utf8");
-chmodSync(outPath, 0o644);
 console.log(entry);
 process.exit(0);
